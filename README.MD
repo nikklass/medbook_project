@@ -92,11 +92,7 @@ Open the Ionic app in your browser and start using it.
 
 1. Access the Ionic app in your web browser by visiting http://localhost:8100.
 
-2. Use the app as intended.
-
-3. Configure any required settings or user accounts.
-
-4. Interact with the Laravel API at http://localhost:8000 for data retrieval and storage.
+2. Interact with the Laravel API at http://localhost:8000.
 
 
 ## Acknowledgments
