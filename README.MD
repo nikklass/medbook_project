@@ -18,68 +18,71 @@ Before you begin, ensure you have met the following requirements:
 
 Follow these steps to set up and run the project:
 
-1. Clone the repository:
+### 1. Clone the repository:
 
-   ```bash
-   git clone https://github.com/nikklass/medbook_project.git
+   `git clone https://github.com/nikklass/medbook_project.git`
 
 
-2. Frontend Setup
+### 2. Frontend Setup
 
-cd medbook-dev-frontend
+   ```
+   cd medbook-dev-frontend
+   ```
 
 a. Install dependencies:
 
-   ```bash
+   ```
    npm install
+   ```
 
 b. Start the Ionic development server:
 
-   ```bash
+   ```
    ionic serve
+   ```
 
-The app will be accessible at http://localhost:8100 in your browser.
+The app will be accessible at **http://localhost:8100** in your browser.
 
 
-3. Backend Setup
+### 3. Backend Setup
 
+```
 cd medbook-dev-backend
-
-a. Install dependencies:
-
-   ```npm install
-
-b. Start the Ionic development server:
-
-   ```ionic serve
-   
-The app will be accessible at http://localhost:8100 in your browser.
-
-
+```
 
 a. Install Laravel dependencies:
 
-   ```composer install
+   ```
+   composer install
+   ```
 
 b. Rename tthe file in the backend root directory named #.env.example to #.env and configure your database settings. Change the following lines adding your database configurations:
 
-DB_HOST=127.0.0.1 - Your database host
-DB_PORT=3306 - database port
-DB_DATABASE= - database name
-DB_USERNAME= - database username
-DB_PASSWORD= - database password
+   ```
+   DB_HOST=127.0.0.1 - Your database host
+   DB_PORT=3306 - database port
+   DB_DATABASE= - database name
+   DB_USERNAME= - database username
+   DB_PASSWORD= - database password
+   ```
 
 c. Run database migrations:
 
-   ```php artisan migrate
+   ```
+   php artisan migrate
+   ```
 
 d. Seed sample database data:
 
-   ```php artisan db:seed
+   ```
+   php artisan db:seed
+   ```
 
 e. Start the Laravel development server:
 
-   ```php artisan serve --port=8000
+   ```
+   php artisan serve --port=8000
+   ```
 
 The API will be accessible at http://localhost:8000.
 
