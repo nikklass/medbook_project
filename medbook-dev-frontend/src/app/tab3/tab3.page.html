@@ -1,0 +1,67 @@
+<ion-header [translucent]="true">
+  <ion-toolbar
+    class="ion-align-items-center ion-justify-content-between"
+    color="primary"
+  >
+    <ion-title> Services </ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="toggleForm()">
+        <ng-container *ngIf="showForm; else plusIcon">
+          <ion-icon slot="icon-only" name="remove"></ion-icon>
+        </ng-container>
+        <ng-template #plusIcon>
+          <ion-icon slot="icon-only" name="add"></ion-icon>
+        </ng-template>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ng-container *ngIf="showForm">
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>New Service</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-item>
+          <ion-label position="stacked">Name</ion-label>
+          <ion-input
+            placeholder="Name"
+            [(ngModel)]="newService.name"
+          ></ion-input>
+        </ion-item>
+
+        <ion-button (click)="addNewService()"
+          ><ion-icon slot="start" name="add"></ion-icon> Add Service</ion-button
+        >
+        <ion-button
+          fill="outline"
+          class="ion-float-right"
+          color="danger"
+          (click)="onCancel()"
+        >
+          <ion-icon slot="start" name="close"></ion-icon> Cancel
+        </ion-button>
+      </ion-card-content>
+    </ion-card>
+  </ng-container>
+
+  <ion-content [fullscreen]="true">
+    <ion-searchbar
+      animated="true"
+      placeholder="Search Services"
+      [(ngModel)]="searchQuery"
+      (input)="onSearchInputChange()"
+      (ionClear)="onSearchInputClear()"
+    ></ion-searchbar>
+
+    <app-service-list
+      #serviceListComponent
+      [services]="services"
+      [isLoading]="isLoading"
+      (editServiceEvent)="onEditService($event)"
+      (confirmDeleteEvent)="onConfirmDelete($event)"
+    ></app-service-list>
+  </ion-content>
+</ion-content>

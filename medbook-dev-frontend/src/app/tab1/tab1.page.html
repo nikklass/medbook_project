@@ -1,0 +1,88 @@
+<ion-header [translucent]="true">
+  <ion-toolbar
+    class="ion-align-items-center ion-justify-content-between"
+    color="primary"
+  >
+    <ion-title> Patient Services </ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="toggleForm()">
+        <ng-container *ngIf="showForm; else plusIcon">
+          <ion-icon slot="icon-only" name="remove"></ion-icon>
+        </ng-container>
+        <ng-template #plusIcon>
+          <ion-icon slot="icon-only" name="add"></ion-icon>
+        </ng-template>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ng-container *ngIf="showForm">
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>New Patient Service</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-item>
+          <ion-label position="stacked">Name</ion-label>
+          <ion-input
+            placeholder="Name"
+            [(ngModel)]="newPatientService.name"
+          ></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked">Date of Birth</ion-label>
+          <ion-input
+            type="date"
+            [(ngModel)]="newPatientService.date_of_birth"
+          ></ion-input>
+        </ion-item>
+        <ion-item *ngIf="genders && genders.length > 0">
+          <ion-label position="stacked">Gender</ion-label>
+          <ion-select placeholder="Select gender" [(ngModel)]="newPatientService.gender_id">
+            <ion-select-option *ngFor="let gender of genders" [value]="gender.id">
+              {{ gender.name }}
+            </ion-select-option>
+          </ion-select>
+        </ion-item>
+        <ion-item *ngIf="services && services.length > 0">
+          <ion-label position="stacked">Type of Service</ion-label>
+          <ion-select placeholder="Select service" [(ngModel)]="newPatientService.service_id">
+            <ion-select-option *ngFor="let service of services" [value]="service.id">
+              {{ service.name }}
+            </ion-select-option>
+          </ion-select>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked">Comments</ion-label>
+          <ion-textarea
+            [(ngModel)]="newPatientService.general_comments"
+          ></ion-textarea>
+        </ion-item>
+        <ion-button (click)="addNewPatientService()"><ion-icon slot="start" name="add"></ion-icon> Add Patient Service</ion-button>
+        <ion-button fill="outline" class="ion-float-right" color="danger" (click)="onCancel()">
+          <ion-icon slot="start" name="close"></ion-icon>  Cancel
+        </ion-button>
+      </ion-card-content>
+    </ion-card>
+  </ng-container>
+
+  <ion-content [fullscreen]="true">
+    <ion-searchbar
+      animated="true"
+      placeholder="Search Patient Services"
+      [(ngModel)]="searchQuery"
+      (input)="onSearchInputChange()"
+      (ionClear)="onSearchInputClear()"
+    ></ion-searchbar>
+
+    <app-patient-service-list
+      #patientServiceListComponent
+      [patientServices]="patientServices"
+      [isLoading]="isLoading"
+      (editPatientServiceEvent)="onEditPatientService($event)"
+      (confirmDeleteEvent)="onConfirmDelete($event)"
+    ></app-patient-service-list>
+  </ion-content>
+</ion-content>

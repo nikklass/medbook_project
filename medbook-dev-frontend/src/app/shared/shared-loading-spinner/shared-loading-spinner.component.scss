@@ -1,0 +1,29 @@
+/* tab2.page.scss */
+
+ion-spinner {
+  // Styling the color of the spinner
+  color: blue;
+
+  // Styling the positioning of the spinner
+  margin: 0 auto; // Center horizontally
+  position: absolute; // Position absolutely within its container
+  top: 50%; // Center vertically
+  left: 50%; // Center horizontally
+  transform: translate(-50%, -50%); // Center it exactly in the middle
+
+  // Styling the size of the spinner
+  font-size: 2rem; // Adjust the font size to make it larger or smaller
+}
+
+.message-container {
+  // Center the message text below the spinner
+  text-align: center;
+  padding-top: 10px; // Add padding on top
+}
+
+/* Center the text vertically */
+ion-label {
+  display: block;
+  text-align: center;
+  margin-top: 10px; // Add spacing between spinner and text
+}

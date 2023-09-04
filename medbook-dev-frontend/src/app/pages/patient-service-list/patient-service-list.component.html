@@ -1,0 +1,25 @@
+<ion-list>
+  <ng-container *ngIf="isLoading">
+    <app-shared-loading-spinner></app-shared-loading-spinner>
+  </ng-container>
+
+  <ion-item *ngFor="let patientService of patientServices" class="list-item-transition"
+  [appMostVisitsHighlight]="patientService.id === mostVisitsPatientId">
+    <ion-label>
+      <h2>{{ patientService?.patient?.name }}</h2>
+      <p>Date of Birth: {{ patientService?.patient?.date_of_birth | customDatePipe }}</p>
+      <p>Gender: {{ patientService?.gender?.name }}</p>
+      <p>Service: {{ patientService?.service?.name }}</p>
+    </ion-label>
+    <ion-buttons slot="end">
+
+      <ion-button
+        (click)="confirmDelete(patientService)"
+        fill="clear"
+        color="danger"
+      >
+        <ion-icon name="trash"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-item>
+</ion-list>
